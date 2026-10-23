@@ -1,0 +1,226 @@
+# ═══════════════════════════════════════════════════
+#               TeamUHC - config.yml
+#   Süreler saniye cinsindendir (1500 = 25 dakika)
+# ═══════════════════════════════════════════════════
+
+prefix: "&8[&aUHC&8] "
+
+game:
+  # UHC'nin oynanacağı dünya
+  world: "world"
+  # Oyunun başlaması için gereken en az takım sayısı (tek başına test için 1 yap)
+  min-teams: 2
+  # PvP açılma süresi
+  pvp-time: 1500
+  # Doğal yenilenmenin kapanma süresi (sadece altın elma/iksir/altın kafa ile can dolar)
+  regen-disable-time: 1500
+  # Border'ın küçülmeye başlama zamanı
+  border-start-time: 1500
+  # Border'ın küçülme süresi
+  border-shrink-time: 2400
+  # Border bittikten kaç saniye sonra glow açılır
+  glow-delay: 480
+  # Oyun başında ışınlandıktan sonra hasar koruması (saniye)
+  start-protection-seconds: 20
+  # Oyun başlarken zorluğu Hard yap
+  set-hard-difficulty: true
+  # Oyun bittikten sonra sıfırlanma süresi
+  end-delay: 15
+  # Oyun bitince takımları sil
+  reset-teams-on-end: true
+  # Oyun başlamadan önce (lobi) hasar ve açlık kapalı
+  lobby-protect: true
+  # Başarım (advancement) mesajlarını gizle
+  hide-advancements: true
+
+border:
+  start-size: 2000
+  end-size: 20
+  center:
+    x: 0
+    z: 0
+  damage: 1.0
+  warning-distance: 10
+
+teams:
+  # Takım başına oyuncu sayısı (2 = duo, 3 = trio, 4 = squad)
+  size: 2
+  # Takım arkadaşına hasar
+  friendly-fire: false
+  # Oyun başlarken takımı olmayanları rastgele takımlara dağıt (false = herkes tek kişilik takım)
+  auto-assign: true
+  # Davet geçerlilik süresi
+  invite-timeout: 30
+  name-format: "Takım %number%"
+  # Takım aynı yerde doğsun
+  spawn-together: true
+  spawn-radius: 5
+  chat:
+    # Sohbette bu işaretle başlayan mesaj sadece takıma gider (ör: !merhaba)
+    prefix: "!"
+    format: "&b[Takım] &f%player%&7: &b%message%"
+
+heads:
+  # Ölen oyuncu kafa düşürsün
+  drop-on-death: true
+  name: "&6%player% Kafası"
+
+# Tarif: 8 altın külçe + ortada 1 oyuncu kafası. Sağ tıklayınca yenir.
+golden-head:
+  enabled: true
+  name: "&6Altın Kafa"
+  lore:
+    - "&7Sağ tıkla: can yeniler ve emilim verir."
+  # Kafanın görünümü. minecraft-heads.com'da "golden head" aratıp beğendiğin kafanın
+  # sayfasındaki "Value" (uzun base64 yazı) ya da textures.minecraft.net adresini buraya yapıştır.
+  # Boş bırakırsan varsayılan (Steve) kafa görünür.
+  texture: ""
+  regen-seconds: 9
+  regen-amplifier: 1        # 0 = I, 1 = II, 2 = III
+  absorption-seconds: 120
+  absorption-amplifier: 0
+
+# Border içine rastgele düşen sandıklar
+airdrops:
+  enabled: true
+  # Oyun başladıktan kaç saniye sonra ilk airdrop düşer
+  first-drop-seconds: 900
+  # Sonraki airdrop'lar arasındaki süre
+  interval-seconds: 300
+  # Border kenarından en az bu kadar blok içeride düşer
+  border-margin: 30
+  # Sandık başına eşya çeşidi sayısı
+  items-per-chest:
+    min: 6
+    max: 10
+  # Format: MATERYAL:min-max:ağırlık  (ağırlık büyüdükçe çıkma ihtimali artar)
+  # Özel: GOLDEN_HEAD = Altın Kafa. Aynı sandıkta aynı eşya iki kez çıkmaz.
+  loot:
+    - "GOLDEN_APPLE:1-3:20"
+    - "GOLDEN_HEAD:1-2:10"
+    - "DIAMOND:1-3:10"
+    - "IRON_INGOT:4-10:18"
+    - "GOLD_INGOT:4-10:15"
+    - "COOKED_BEEF:8-16:20"
+    - "ARROW:16-32:14"
+    - "BOW:1:8"
+    - "ENDER_PEARL:1-2:8"
+    - "OBSIDIAN:4-8:8"
+    - "WATER_BUCKET:1:8"
+    - "LAVA_BUCKET:1:6"
+    - "IRON_SWORD:1:6"
+    - "IRON_CHESTPLATE:1:5"
+    - "IRON_LEGGINGS:1:5"
+    - "EXPERIENCE_BOTTLE:4-8:8"
+
+glow:
+  enabled: true
+
+timers:
+  enabled: true
+  # Geri sayım mesajı aralığı (saniye). Ayrıca 30, 10 ve son 5 saniyede de yazar.
+  interval: 60
+
+messages:
+  unit-minute: "dk"
+  unit-second: "sn"
+
+  uhc-usage: "&7Kullanım: &f/uhc <start|stop|reload|revive <oyuncu>>"
+  already-running: "&cOyun zaten çalışıyor."
+  not-running: "&cÇalışan bir oyun yok."
+  not-enough-teams: "&cOyunu başlatmak için en az &f%min% &ctakım gerekli."
+  stopped: "&aOyun durduruldu ve sıfırlandı."
+  reloaded: "&aConfig yeniden yüklendi."
+  only-players: "&cBu komut sadece oyuncular içindir."
+  player-not-found: "&cOyuncu bulunamadı."
+  joined-as-spectator: "&7Oyun devam ediyor, izleyici olarak katıldın."
+  revived: "&a💫 &f%player% &a(%team%&a) canlandırıldı!"
+  revive-already-alive: "&cBu oyuncu zaten hayatta."
+
+  team-usage: "&7Kullanım: &f/team <create|invite <oyuncu>|accept|leave|list>"
+  tc-usage: "&7Kullanım: &f/tc <mesaj>"
+  team-created: "&aTakım kuruldu: %team%&a. &f/team invite <oyuncu> &aile arkadaş ekle."
+  team-already: "&cZaten bir takımdasın."
+  team-none: "&cBir takımda değilsin."
+  team-self-invite: "&cKendini davet edemezsin."
+  team-target-in-team: "&f%player% &czaten bir takımda."
+  team-invite-sent: "&aDavet gönderildi: &f%player%"
+  team-invite-received: "&f%player% &aseni %team% &atakımına davet etti. &f/team accept"
+  team-no-invite: "&cBekleyen bir davetin yok."
+  team-joined: "&a✓ &f%player% &atakıma katıldı."
+  team-left: "&c✗ &f%player% &ctakımdan ayrıldı."
+  team-left-self: "&eTakımdan ayrıldın."
+  team-full: "&cTakım dolu! (en fazla %size% kişi)"
+  team-locked: "&cOyun başladığı için takımlar kilitli."
+  team-list-empty: "&7Henüz takım yok."
+  team-list-header: "&aTakımlar:"
+  team-list-line: "&7- %team%&7: &f%members%"
+  friendly-fire-blocked: "&cTakım arkadaşına vuramazsın!"
+
+  game-start:
+    - "&a══════════════════════"
+    - "&a   TAKIMLI ULTRA HARD CORE"
+    - "&a══════════════════════"
+    - "&a➤ Oyun başladı! &fTakımınla hayatta kal!"
+    - "&a👥 Takım boyutu: &f%team-size%"
+    - "&a🛡 PvP &f%pvp-time% dakika sonra açılacak"
+    - "&a🌍 Border &f%border-time% dakika sonra küçülmeye başlayacak"
+  pvp-enabled:
+    - "&a══════════════════════"
+    - "&a   ⚔ PVP AÇILDI ⚔"
+    - "&a══════════════════════"
+    - "&f⚠ Takımının yanında kal!"
+  regen-disabled:
+    - "&a══════════════════════"
+    - "&a   DOĞAL YENİLENME KAPANDI"
+    - "&a══════════════════════"
+    - "&aCan sadece şunlardan gelir:"
+    - "&f  Altın elma, iyileştirme iksiri, Altın Kafa"
+  border-start:
+    - "&a🌍 Border küçülmeye başladı!"
+    - "&a  Son boyut: &f%size% blok"
+    - "&a  Süre: &f%time% dakika"
+  border-finished:
+    - "&a══════════════════════"
+    - "&a   Border minimum boyuta ulaştı!"
+    - "&a══════════════════════"
+    - "&a📢 Glow &f%time% dakika sonra açılacak!"
+  glow-enabled:
+    - "&a══════════════════════"
+    - "&a   GLOW AÇILDI"
+    - "&a══════════════════════"
+    - "&a📢 Hayatta kalan herkes parlıyor! Final savaşı başladı!"
+
+  death: "&c⚡ &f%victim% &7(%victim_team%&7) &cöldü"
+  death-killer: "&c⚡ &f%victim% &7(%victim_team%&7) &c- öldüren: &f%killer% &7(%killer_team%&7)"
+  teammate-died: "&c💀 Takım arkadaşın &f%player% &cöldü! &7(takımında %alive% kişi hayatta)"
+  team-eliminated:
+    - "&c══════════════════════"
+    - "&c  💀 %team% &cELENDİ! 💀"
+    - "&c══════════════════════"
+    - "&7Kalan takım: &f%teams-left%"
+  win:
+    - "&a══════════════════════"
+    - "&a    ⭐ KAZANAN TAKIM ⭐"
+    - "&a══════════════════════"
+    - "&a    %team%"
+    - "&f    %winners%"
+    - "&a══════════════════════"
+
+  welcome:
+    - "&a══════════════════════"
+    - "&a  HOŞ GELDİN"
+    - "&a══════════════════════"
+    - "&a💎 Mod: &fTakımlı Ultra Hard Core"
+    - "&a👥 Takımın: &f%team%"
+    - "&7/team create, /team invite <oyuncu>, /team accept"
+
+  airdrop-dropped:
+    - "&6📦 AIRDROP düştü! &fKoordinatlar: &e%x% %y% %z%"
+    - "&7Sandıkta iyi eşyalar var, acele et!"
+
+  timer-pvp: "&a⚔ PvP açılmasına &f%time%"
+  timer-regen: "&a❤ Doğal yenilenmenin kapanmasına &f%time%"
+  timer-border: "&a🌍 Border küçülmesine &f%time%"
+  timer-border-end: "&a⏰ Border küçülmesinin bitmesine &f%time%"
+  timer-glow: "&a👁 Glow'a &f%time%"

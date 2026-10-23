@@ -1,0 +1,26 @@
+name: TeamUHC
+version: 1.0.0
+main: com.takimliuhc.TeamUHC
+api-version: '1.21'
+description: Takımlı UHC
+commands:
+  uhc:
+    description: UHC yönetim komutları
+    usage: /uhc <start|stop|reload|revive>
+    permission: uhc.admin
+  team:
+    description: Takım komutları
+    usage: /team <create|invite|accept|leave|list>
+    permission: uhc.team
+  tc:
+    description: Takım sohbeti
+    usage: /tc <mesaj>
+    permission: uhc.team
+permissions:
+  uhc.admin:
+    default: op
+  uhc.team:
+    default: true
+  uhc.spectate:
+    description: Oyuna katılmaz, izleyici olur
+    default: false
